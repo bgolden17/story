@@ -58,8 +58,9 @@ public class PosTerminalMain {
 		 */
 		Scanner scnr = new Scanner(System.in);
 		double total;
+		String payType;
 		List<ProductInfo> menu = new ArrayList<>();
-		List<String, Double, Int> cart = new ArrayList<>();
+		List<Product> cart = new ArrayList<>();
 		
 		fillMenu();
 		
@@ -74,35 +75,18 @@ public class PosTerminalMain {
 				System.out.println("How many would you like?");
 				String itemQuant = scnr.nextLine();
 				addItem(item, itemQuant);
-	
 			}
 			while (Validator.getYesNo(scnr, "Would you like to keep ordering?"));
 			
 			calcTotal();
-			
-			takePay();
+			System.out.println("Would you like to pay with cash, credit, or check?");
+			payType = scnr.nextLine();
+			takePay(payType);
 			
 			printReceipt();
 			
 		}
-		while(Validator.getYesNo(scnr, "Would you like start another order?"))
+		while(Validator.getYesNo(scnr, "Would you like start another order?"));
 	}
-
-	public static void fillMenu()
-	{
 	
-		int sum = 0;
-		try (FileInputStream fis = new FileInputStream("numbers.txt");
-				Scanner fileScnr = new Scanner(fis)) {
-			while (fileScnr.hasNextInt()) {
-				int num = fileScnr.nextInt();
-				System.out.println(num);
-				sum += num;
-			}
-		} catch (IOException e) {
-			System.out.println("Failed to read file.");
-		}
-		System.out.println("Sum: " + sum);
-	
-	}
 }

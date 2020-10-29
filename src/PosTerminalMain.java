@@ -1,3 +1,5 @@
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -56,7 +58,7 @@ public class PosTerminalMain {
 		 */
 		Scanner scnr = new Scanner(System.in);
 		double total;
-		List<String, Double> menu = new ArrayList<>();
+		List<ProductInfo> menu = new ArrayList<>();
 		List<String, Double, Int> cart = new ArrayList<>();
 		
 		fillMenu();
@@ -86,4 +88,21 @@ public class PosTerminalMain {
 		while(Validator.getYesNo(scnr, "Would you like start another order?"))
 	}
 
+	public static void fillMenu()
+	{
+	
+		int sum = 0;
+		try (FileInputStream fis = new FileInputStream("numbers.txt");
+				Scanner fileScnr = new Scanner(fis)) {
+			while (fileScnr.hasNextInt()) {
+				int num = fileScnr.nextInt();
+				System.out.println(num);
+				sum += num;
+			}
+		} catch (IOException e) {
+			System.out.println("Failed to read file.");
+		}
+		System.out.println("Sum: " + sum);
+	
+	}
 }

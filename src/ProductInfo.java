@@ -3,6 +3,11 @@ public class ProductInfo {
 	private String name;
 	private double price;
 
+	public ProductInfo() {
+		super();
+
+	}
+
 	public ProductInfo(String name, double price) {
 		super();
 		this.name = name;

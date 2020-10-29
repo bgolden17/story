@@ -7,5 +7,7 @@ public class StoryPractice {
 		System.out.println("Kai-Yun and his merry monkey band could not take anything seriously, they were always monkeying around.");
 		System.out.println("Then the ninja Gorilla's show up");
 		System.out.println("The gorillas charged the monkeys, shrieking as they approached.");
+		System.out.println("Kai-Yun's monkey allies fought hard but were no match for the stronger gorillas.");
+		
 	}
 }

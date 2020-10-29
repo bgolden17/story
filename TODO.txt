@@ -1,3 +1,4 @@
 Finish takePay and its respective validators
 Make sure all customer inputs have validation
 Create a new child class of ProductInfo, Coffee. Let the user customize their coffee.
+Write 5 J unit tests for our methods

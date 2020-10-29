@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class PosTerminalMain {
 
@@ -29,10 +32,58 @@ public class PosTerminalMain {
 		//Main menu Method;
 		//Return to the original menu for a new order. (Hint: you’ll want an array or ArrayList to keep track of what’s been ordered!)
 		
+		/*
+		 * init a scanner
+		 * *Method* print the ArrayList menu
+		 * ask user for input (item and quantity)
+		 * *Method* put the input into the ArrayList order (use for loop for quantity)
+		 * after ordering an item, ask if they want to order another (n breaks loop)
+		 * redisplay the menu (old method) on y, have a break option
+		 * 
+		 * 
+		 * ArrayList<String, Double> menu
+		 * ArrayList<String, Double, Int> cart
+		 * 
+		 * Method void printMenu()
+		 * 
+		 * Method addItem void(String item, int quantity)
+		 * 
+		 * Method calcTotal double()
+		 * 
+		 * Method takePay void(String paymentType)
+		 * 
+		 * Method fillMenu void()
+		 */
+		Scanner scnr = new Scanner(System.in);
+		double total;
+		List<String, Double> menu = new ArrayList<>();
+		List<String, Double, Int> cart = new ArrayList<>();
 		
+		fillMenu();
 		
-
-
+		do
+		{
+			total = 0;
+			do
+			{
+				printMenu();
+				System.out.println("What item would you like to order?");
+				String item = scnr.nextLine();
+				System.out.println("How many would you like?");
+				String itemQuant = scnr.nextLine();
+				addItem(item, itemQuant);
+	
+			}
+			while (Validator.getYesNo(scnr, "Would you like to keep ordering?"));
+			
+			calcTotal();
+			
+			takePay();
+			
+			printReceipt();
+			
+		}
+		while(Validator.getYesNo(scnr, "Would you like start another order?"))
 	}
 
 }

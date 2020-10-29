@@ -39,12 +39,12 @@ public class PosTerminalMain {
 
 	}
 
-	public static Double calcPay(int productCount,int price) {
+	public static Double calcTotal(int productCount,int price) {
+		double total = productCount * price;
 		
 		
 		
-		
-		return null;
+		return total;
 		
 	}
 	

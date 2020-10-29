@@ -8,6 +8,6 @@ public class StoryPractice {
 		System.out.println("Then the ninja Gorilla's show up");
 		System.out.println("The gorillas charged the monkeys, shrieking as they approached.");
 		System.out.println("Kai-Yun's monkey allies fought hard but were no match for the stronger gorillas.");
-		
+		System.out.println("Then they all worked out there differences and went to Taco Bell");
 	}
 }

@@ -34,7 +34,7 @@ public class PosTerminalMain {
 			printTotal();
 			System.out.println("Would you like to pay with cash, credit, or check?");
 			payType = scnr.nextLine();
-			takePay(payType);
+		//	takePay(payType);
 			
 			System.out.println("Paid with " + payType);
 			printReceipt();
@@ -80,6 +80,16 @@ public class PosTerminalMain {
 		System.out.println("Sales Tax:\t" + (total * .06));
 		System.out.println("Grand Total:\t" + (total * 1.06));
 	}
+	
+	public static void printMenu() {
+	
+	System.out.println("Items\tPrice");
+	System.out.println("------------");
+	System.out.println("------------");
 
+	for (Map.Entry<String, Double> entry : menu.entrySet()) {
+		System.out.println("Key = " + "  " + entry.getKey() + "  " + "Value =" + entry.getValue());
+	}
+	}
 
 }

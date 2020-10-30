@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -273,6 +274,20 @@ public class Validator {
 			}
 		}
 		return null;
+	}
+	
+	public static String getItem(Scanner scnr, String prompt, Map map) {
+		boolean flag = true;
+		String input = "";
+		while (flag) {
+			input = getString(scnr, prompt);
+			if (map.containsKey(input)) {
+				flag = false;
+			} else {
+				System.out.println("Invalid input. Try again.");
+			}
+		}
+		return input;
 	}
 
 }

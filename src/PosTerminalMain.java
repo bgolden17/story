@@ -23,10 +23,8 @@ public class PosTerminalMain {
 			orderTotal = 0;
 			do {
 				printMenu();
-				System.out.println("What item would you like to order?");
-				String item = scnr.nextLine();
-				System.out.println("How many would you like?");
-				int itemQuant = scnr.nextInt();
+				String item = Validator.getItem(scnr, "What would you like to order?", menu);
+				int itemQuant = Validator.getIntInRange(scnr, "How many would you like?", 1, 99);
 				addItem(item, itemQuant);
 			}
 			while (Validator.getYesNo(scnr, "Would you like to keep ordering?"));

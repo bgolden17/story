@@ -98,7 +98,7 @@ public class PosTerminalMain {
 		if (paymentType.equals("cash")) {
 			System.out.println("Cash payment selected.");
 			double cashAmnt = Validator.getDouble(scnr, "Please enter cash payment amount.");
-			double changeTotal = cashAmnt - orderTotal ;
+			double changeTotal = cashAmnt - (orderTotal * 1.06);
 			System.out.println("Your change amount is $" + changeTotal);
 			return "cash";
 		} else if (paymentType.equals("check")) {

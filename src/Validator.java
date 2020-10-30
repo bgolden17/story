@@ -125,5 +125,154 @@ public class Validator {
 			}
 		}
 	}
+	
+	public static String getPaymentType (Scanner scnr, String prompt) {
+		boolean validInfo = false;
+		while (validInfo == false) {
+		System.out.println(prompt);
+		String paymentType = scnr.nextLine();
+		if (paymentType.toLowerCase().contains("card")) {
+			validInfo = true;
+			return "card";
+		} else if (paymentType.toLowerCase().contains("check")) {
+			validInfo = true;
+			return "check";
+		} else if (paymentType.toLowerCase().contains("cash")) {
+			validInfo = true;
+			return "cash";
+		} else {
+			System.out.println("Payment method is invalid.");
+			validInfo = false;
+		}
+		}
+		return null;
+	}
+	
+	public static String getCheckNum (Scanner scnr, String prompt) {
+		boolean validInfo = false;
+		while (validInfo == false) {
+			System.out.println(prompt);
+			String checkNum = scnr.nextLine();
+		    boolean flagOne = Character.isDigit(checkNum.charAt(0));
+		    boolean flagTwo = Character.isDigit(checkNum.charAt(1));
+		    boolean flagThree = Character.isDigit(checkNum.charAt(2));
+		    boolean flagFour = Character.isDigit(checkNum.charAt(3));
+		    boolean flagFive = (checkNum.length() < 5);
+			if (flagOne && flagTwo && flagThree && flagFour && flagFive) {
+				validInfo = true;
+				return checkNum;
+			} else {
+				System.out.println("Check number was invalid");
+				validInfo = false;
+			}	    
+			}
+		return null;
+	}
+	
+	public static String getCardNum (Scanner scnr, String prompt) {
+		boolean validInfo = false;
+		boolean flagOne = false;
+		boolean flagTwo = false;
+		boolean flagThree =	false;	
+		boolean flagFour =	false;
+		boolean flagFive = false;
+		boolean flagSix = false;
+		boolean flagSeven =	false;	
+		boolean flagEight =	false;
+		boolean flagNine = false;
+		boolean flagTen = false;
+		boolean flagEleven = false;	
+		boolean flagTwelve = false;
+		boolean flagThirteen =	false;
+		boolean flagFourteen = false;
+		boolean flagFifteen = false;
+		boolean flagSixteen = false;	
+		
+		while (validInfo == false) {
+			System.out.println(prompt);
+			String cardNum = scnr.nextLine();
+			if (cardNum.length() == 16) {
+			flagOne = Character.isDigit(cardNum.charAt(0));
+			flagTwo = Character.isDigit(cardNum.charAt(1));
+			flagThree = Character.isDigit(cardNum.charAt(2));
+			flagFour = Character.isDigit(cardNum.charAt(3));
+			flagFive = Character.isDigit(cardNum.charAt(4));
+			flagSix = Character.isDigit(cardNum.charAt(5));
+			flagSeven = Character.isDigit(cardNum.charAt(6));
+			flagEight = Character.isDigit(cardNum.charAt(7));
+			flagNine = Character.isDigit(cardNum.charAt(8));
+			flagTen = Character.isDigit(cardNum.charAt(9));
+			flagEleven = Character.isDigit(cardNum.charAt(10));
+			flagTwelve = Character.isDigit(cardNum.charAt(11));
+			flagThirteen = Character.isDigit(cardNum.charAt(12));
+			flagFourteen = Character.isDigit(cardNum.charAt(13));
+			flagFifteen = Character.isDigit(cardNum.charAt(14));
+			flagSixteen = Character.isDigit(cardNum.charAt(15));
+			}
+			if (flagOne && flagTwo && flagThree && flagFour && flagFive && flagSix && flagSeven && flagEight && flagNine && flagTen && flagEleven && flagTwelve && flagThirteen && flagFourteen && flagFifteen && flagSixteen) {
+				validInfo = true;
+				return cardNum;
+			} else {
+				System.out.println("Card number is invalid.");
+				validInfo = false;
+			}
+			}
+		return "oops";
+	}
+	
+	public static String getCardExp (Scanner scnr, String prompt) {
+		boolean validInfo = false;
+		boolean flagOne = false;
+		boolean flagTwo = false;
+		boolean flagThree =	false;	
+		boolean flagFour =	false;	
+		boolean flagFive = false;
+				
+		while (validInfo == false) {
+			System.out.println(prompt);
+			String cardExp = scnr.nextLine();
+			if (cardExp.length() == 5) {
+			flagOne = Character.isDigit(cardExp.charAt(0));
+			flagTwo = Character.isDigit(cardExp.charAt(1));
+			flagThree = Character.isDigit(cardExp.charAt(3));
+			flagFour = Character.isDigit(cardExp.charAt(4));
+			flagFive = (cardExp.charAt(2) == '/');
+			}
+			if (flagOne && flagTwo && flagThree && flagFour && flagFive) {
+				validInfo = true;
+				return cardExp;
+			} else {
+				System.out.println("Card expiration date is invalid.");
+				validInfo = false;
+			}
+		}
+		return null;
+	}
+	
+	public static String getCardCvv (Scanner scnr, String prompt) {
+		boolean validInfo = false;
+		while (validInfo == false) {
+			System.out.println(prompt);
+			String cardCvv = scnr.nextLine();
+			boolean flagOne = false;
+			boolean flagTwo = false;
+			boolean flagThree = false;
+			
+			if (cardCvv.length() == 3) {
+			flagOne = Character.isDigit(cardCvv.charAt(0));
+			flagTwo = Character.isDigit(cardCvv.charAt(1));
+			flagThree = Character.isDigit(cardCvv.charAt(2));
+			}
+			
+			if (flagOne && flagTwo && flagThree) {
+				validInfo = true;
+				return cardCvv;
+			} else {
+				System.out.println("CVV code was invalid.");
+				validInfo = false;
+			}
+		}
+		return null;
+	}
 
 }

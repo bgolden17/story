@@ -32,7 +32,7 @@ public class PosTerminalMain {
 			
 			printTotal();
 			
-			takePay(Validator.getPaymentType(scnr, "How would you like to pay? (cash/MasterCard/check)"));
+			payType = takePay(Validator.getPaymentType(scnr, "How would you like to pay? (Cash/MasterCard/Check)"));
 		//	takePay(payType);
 			
 			System.out.println("Paid with " + payType);
@@ -91,17 +91,19 @@ public class PosTerminalMain {
 	}
 	}
 	
-	public static void takePay (String paymentType) { //need payment type validator - DONE
+	public static String takePay (String paymentType) { //need payment type validator - DONE
 		paymentType = paymentType.toLowerCase();
 		if (paymentType.equals("cash")) {
 			System.out.println("Cash payment selected.");
 			double cashAmnt = Validator.getDouble(scnr, "Please enter cash payment amount.");
-			double changeTotal = orderTotal - cashAmnt;
+			double changeTotal = cashAmnt - orderTotal ;
 			System.out.println("Your change amount is $" + changeTotal);
+			return "cash";
 		} else if (paymentType.equals("check")) {
 			System.out.println("Check payment selected.");
 			String checkNum = Validator.getCheckNum(scnr, "Please enter your check number"); //need check number validator - DONE
 			System.out.println("You paid with check number: " + checkNum);
+			return "check";
 		} else if (paymentType.equals("card")) {
 			String cardNum;
 			String cardExp;
@@ -132,6 +134,7 @@ public class PosTerminalMain {
 			}
 			System.out.println("Card payment info:\r\n" + cardNum + "\r\n" + cardExp + "\r\n" + cardCvv);
 		}
+		return "card";
 	}
 
 }

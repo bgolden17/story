@@ -61,8 +61,10 @@ public class PosTerminalMain {
 	public static void addItem(String item, int itemQuant)
 	{
 		for(int i = itemQuant; i > 0; i--)
+		{
 		cart.add(new Product(item, menu.get(item)));
 		orderTotal += menu.get(item);
+		}
 	}
 	
 	public static void printReceipt()

@@ -279,8 +279,22 @@ public class Validator {
 	public static String getItem(Scanner scnr, String prompt, Map map) {
 		boolean flag = true;
 		String input = "";
+		String firstLetter;
+		
 		while (flag) {
 			input = getString(scnr, prompt);
+			String[] words = input.split(" ");
+			for (int i =0; i < words.length; i++)
+			{
+				firstLetter = words[i].substring(0,1).toUpperCase();
+				words[i] = firstLetter + words[i].substring(1);
+			}
+			input = "";
+			for (int i =0; i < words.length; i++)
+			{
+				input += words[i] + " ";
+			}
+			input = input.substring(0,input.length()-1);
 			if (map.containsKey(input)) {
 				flag = false;
 			} else {

@@ -20,6 +20,7 @@ public class PosTerminalMain {
 	public static void main(String[] args) {
 
 		do {
+			cart.clear();
 			orderTotal = 0;
 			do {
 				fillMenu();

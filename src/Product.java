@@ -1,14 +1,14 @@
 
-public class ProductInfo {
+public class Product {
 	private String name;
 	private double price;
 
-	public ProductInfo() {
+	public Product() {
 		super();
 
 	}
 
-	public ProductInfo(String name, double price) {
+	public Product(String name, double price) {
 		super();
 		this.name = name;
 		this.price = price;

@@ -14,7 +14,7 @@ public class PosTerminalMain {
 	public static double orderTotal;
 	public static String payType;
 	public static Map<String, Double> menu = new HashMap<>();
-	public static List<ProductInfo> cart = new ArrayList<>();
+	public static List<Product> cart = new ArrayList<>();
 	private static Path filePath = Paths.get("Product.txt");
 	public static Scanner scnr = new Scanner(System.in);
 	public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class PosTerminalMain {
 			while (Validator.getYesNo(scnr, "Would you like to keep ordering?"));
 			
 			printTotal();
-
+			
 			takePay(Validator.getPaymentType(scnr, "How would you like to pay? (cash/MasterCard/check)"));
 		//	takePay(payType);
 			
@@ -62,13 +62,13 @@ public class PosTerminalMain {
 	public static void addItem(String item, int itemQuant)
 	{
 		for(int i = itemQuant; i > 0; i--)
-		cart.add(new ProductInfo(item, menu.get(item)));
+		cart.add(new Product(item, menu.get(item)));
 		orderTotal += menu.get(item);
 	}
 	
 	public static void printReceipt()
 	{
-		for(ProductInfo components : cart)
+		for(Product components : cart)
 		{
 			System.out.println(components.getName() + "\t" +components.getPrice());
 		}

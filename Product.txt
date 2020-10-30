@@ -1,0 +1,12 @@
+Brewed Coffee~2.35
+Iced Coffee~2.35
+Hot Tea~2.25
+Iced Tea~3.40
+Chai Tea~3.75
+Hot Choclate~2.85
+Lemonade~2.50
+Muffin~2.25
+Bagel~2.00
+Cinnamon Roll~4.25
+Fruit Tart~4.00
+Chocolate Eclair~3.75

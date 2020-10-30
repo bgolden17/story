@@ -22,6 +22,7 @@ public class PosTerminalMain {
 		do {
 			orderTotal = 0;
 			do {
+				fillMenu();
 				printMenu();
 				String item = Validator.getItem(scnr, "What would you like to order?", menu);
 				int itemQuant = Validator.getIntInRange(scnr, "How many would you like?", 1, 99);

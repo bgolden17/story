@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ public class PosTerminalMain {
 	public static List<Product> cart = new ArrayList<>();
 	private static Path filePath = Paths.get("Product.txt");
 	public static Scanner scnr = new Scanner(System.in);
+	public static double salesTax = 1.06;
 	public static void main(String[] args) {
 		fakeLoad();
 		do {
@@ -82,8 +85,8 @@ public class PosTerminalMain {
 	public static void printTotal()
 	{
 		System.out.println("Subtotal:\t" + orderTotal);
-		System.out.println("Sales Tax:\t" + (orderTotal * .06));
-		System.out.println("Grand Total:\t" + (orderTotal * 1.06));
+		System.out.println("Sales Tax:\t" + (orderTotal * (salesTax - 1)));
+		System.out.println("Grand Total:\t" + (orderTotal * salesTax));
 	}
 	
 	public static void printMenu() {
@@ -154,8 +157,35 @@ public class PosTerminalMain {
 		}
 	}
 	private static void engMode ()
+
 	{
-		System.out.println("ENGINEERING MODE\rEnter a command:\r1) Add item");
-		String input = scnr.nextLine();
+		System.out.println("ENGINEERING MODE");
+		String menuInput;
+		do
+		{
+			System.out.println("Enter a command:\r1) Add item\r2) Change sales tax");
+			menuInput = scnr.nextLine();
+			if (menuInput.equalsIgnoreCase("Add Item") || menuInput.equals("1"))
+			{
+				System.out.println("Enter new item name.");
+				String itemName = scnr.nextLine();
+				System.out.println("Enter new item price.");
+				double itemPrice = scnr.nextDouble();
+				String line = itemName + "~" + itemPrice;
+				List<String> lines = Collections.singletonList(line);
+				try {
+					Files.write(filePath, lines, StandardOpenOption.CREATE,
+							StandardOpenOption.APPEND);
+				} catch (IOException e) {
+					System.out.println("Unable to write to file.");
+				}	
+			}
+			else if (menuInput.equalsIgnoreCase("Change sales tax") || menuInput.equals("2"))
+			{
+				Validator.getDouble(scnr, "Enter the new sales tax in 1.xx format");
+				
+			}
+		} while(!Validator.getYesNo(scnr, "Exit Engineering Mode? "));
+		
 	}
 }

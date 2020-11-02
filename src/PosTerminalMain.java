@@ -18,7 +18,7 @@ public class PosTerminalMain {
 	private static Path filePath = Paths.get("Product.txt");
 	public static Scanner scnr = new Scanner(System.in);
 	public static void main(String[] args) {
-
+		fakeLoad();
 		do {
 			cart.clear();
 			orderTotal = 0;
@@ -142,5 +142,20 @@ public class PosTerminalMain {
 			System.out.println("Card payment info:\r\n" + cardNum + "\r\n" + cardExp + "\r\n" + cardCvv + "\r\n");
 		}
 		return "card";
+	}
+	
+	private static void fakeLoad ()
+	{
+		System.out.println("Loading.... Press enter to continue.");
+		String engPassword = scnr.nextLine();
+		if (engPassword.equals("hidden"))
+		{
+			engMode();
+		}
+	}
+	private static void engMode ()
+	{
+		System.out.println("ENGINEERING MODE\rEnter a command:\r1) Add item");
+		String input = scnr.nextLine();
 	}
 }

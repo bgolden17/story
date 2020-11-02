@@ -232,6 +232,25 @@ public class Validator {
 		while (validInfo == false) {
 			System.out.println(prompt);
 			String cardExp = scnr.nextLine();
+			validInfo = isValidCardExp(cardExp);
+			if (validInfo)
+				return cardExp;
+			else {
+				System.out.println("Invalid input.");
+			}
+		}
+		return null;
+	}
+	
+	public static boolean isValidCardExp(String cardExp)
+	{
+		boolean validInfo = false;
+		boolean flagOne = false;
+		boolean flagTwo = false;
+		boolean flagThree =	false;	
+		boolean flagFour =	false;	
+		boolean flagFive = false;
+				
 			if (cardExp.length() == 5) {
 			flagOne = Character.isDigit(cardExp.charAt(0));
 			flagTwo = Character.isDigit(cardExp.charAt(1));
@@ -241,13 +260,10 @@ public class Validator {
 			}
 			if (flagOne && flagTwo && flagThree && flagFour && flagFive) {
 				validInfo = true;
-				return cardExp;
+				return true;
 			} else {
-				System.out.println("Card expiration date is invalid.");
-				validInfo = false;
+				return false;
 			}
-		}
-		return null;
 	}
 	
 	public static String getCardCvv (Scanner scnr, String prompt) {
@@ -255,25 +271,35 @@ public class Validator {
 		while (validInfo == false) {
 			System.out.println(prompt);
 			String cardCvv = scnr.nextLine();
-			boolean flagOne = false;
-			boolean flagTwo = false;
-			boolean flagThree = false;
-			
-			if (cardCvv.length() == 3) {
-			flagOne = Character.isDigit(cardCvv.charAt(0));
-			flagTwo = Character.isDigit(cardCvv.charAt(1));
-			flagThree = Character.isDigit(cardCvv.charAt(2));
-			}
-			
-			if (flagOne && flagTwo && flagThree) {
-				validInfo = true;
+			validInfo = isValidCardCvv(cardCvv);
+			if (validInfo)
+			{
 				return cardCvv;
-			} else {
-				System.out.println("CVV code was invalid.");
-				validInfo = false;
+			}
+			else {
+				System.out.println("Invalid input.");
 			}
 		}
 		return null;
+	}
+	
+	public static boolean isValidCardCvv (String cardCvv)
+	{
+		boolean flagOne = false;
+		boolean flagTwo = false;
+		boolean flagThree = false;
+		
+		if (cardCvv.length() == 3) {
+		flagOne = Character.isDigit(cardCvv.charAt(0));
+		flagTwo = Character.isDigit(cardCvv.charAt(1));
+		flagThree = Character.isDigit(cardCvv.charAt(2));
+		}
+		
+		if (flagOne && flagTwo && flagThree) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public static String getItem(Scanner scnr, String prompt, Map map) {

@@ -84,9 +84,9 @@ public class PosTerminalMain {
 	
 	public static void printTotal()
 	{
-		System.out.println("Subtotal:\t" + orderTotal);
-		System.out.println("Sales Tax:\t" + (orderTotal * (salesTax - 1)));
-		System.out.println("Grand Total:\t" + (orderTotal * salesTax));
+		System.out.printf("Subtotal:\t" + "$%.2f\r\n", orderTotal);
+		System.out.printf("Sales Tax:\t" + "$%.2f\r\n", (orderTotal * (salesTax - 1)));
+		System.out.printf("Grand Total:\t" + "$%.2f\r\n", (orderTotal * salesTax));
 	}
 	
 	public static void printMenu() {

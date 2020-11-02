@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.Scanner;
 
 import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 public class Tests {
 	private final InputStream systemIn = System.in;

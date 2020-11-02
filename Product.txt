@@ -10,3 +10,4 @@ Bagel~2.00
 Cinnamon Roll~4.25
 Fruit Tart~4.00
 Chocolate Eclair~3.75
+Juice~5.25
